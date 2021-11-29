@@ -13,6 +13,7 @@ import {
 import { CreateUserDTO } from './dto/create-user.dto';
 import { UpdateUserDTO } from './dto/update-user.dto';
 import { UserService } from './user.service';
+import { ValidateNewUser } from './validations/validateNewUser';
 
 @Controller('user')
 export class UserController {
@@ -35,7 +36,10 @@ export class UserController {
   }
 
   @Post()
-  async createUser(@Res() res: any, @Body() createUserDTO: CreateUserDTO) {
+  async createUser(
+    @Res() res: any,
+    @Body(ValidateNewUser) createUserDTO: CreateUserDTO,
+  ) {
     const newUser = await this.userService.createUser(createUserDTO);
 
     return res.status(HttpStatus.CREATED).json(newUser);

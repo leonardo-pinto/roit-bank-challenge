@@ -26,7 +26,7 @@ export class UserService {
 
   async updateUser(id: number, updateUserDTO: UpdateUserDTO): Promise<User> {
     const updatedUser = await this.userModel
-      .findByIdAndUpdate(id, updateUserDTO)
+      .findOneAndUpdate({ id }, updateUserDTO)
       .exec();
     return updatedUser;
   }
@@ -34,5 +34,10 @@ export class UserService {
   async deleteUser(id: number): Promise<any> {
     const deletedUser = await this.userModel.findOneAndRemove({ id });
     return deletedUser;
+  }
+
+  async getUserByName(nome: string): Promise<User> {
+    const user = await this.userModel.findOne({ nome });
+    return user;
   }
 }

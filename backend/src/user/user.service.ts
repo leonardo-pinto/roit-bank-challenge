@@ -15,7 +15,7 @@ export class UserService {
   }
 
   async getUserById(id: number): Promise<User> {
-    const user = await this.userModel.findById(id).exec();
+    const user = await this.userModel.findOne({ id }).exec();
     return user;
   }
 

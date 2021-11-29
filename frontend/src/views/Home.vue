@@ -25,7 +25,7 @@
               <div>
                 <div>
                   <button>Editar</button>
-                  <button>Deletar</button>
+                  <button @click="deleteUser(user.id)">Deletar</button>
                 </div>
               </div>
             </td>
@@ -49,16 +49,23 @@ export default {
   },
 
   created() {
-    this.getAllCustomers();
+    this.getAllUsers();
   },
 
   methods: {
-    getAllCustomers() {
+    getAllUsers() {
       axios
         .get('http://localhost:3000/user')
-        .then((users) => {
-          this.users = users;
+        .then((res) => {
+          this.users = res.data;
         });
+    },
+
+    deleteUser(id) {
+      console.log(id);
+      axios
+        .delete(`http://localhost:3000/user/${id}`)
+        .then(() => window.location.reload());
     },
   },
 

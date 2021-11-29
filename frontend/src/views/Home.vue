@@ -1,5 +1,9 @@
 <template>
   <div>
+    <modal-create-user v-show="isModalVisible" @close="closeModal" />
+    <div>
+      <button type="button" @click="openModal">Cadastrar</button>
+    </div>
     <div>
       <div v-if="users.length === 0">
         <h2>Não existem usuários cadastrados</h2>
@@ -38,13 +42,18 @@
 
 <script>
 import axios from 'axios';
+import ModalCreateUser from '../components/ModalCreateUser.vue';
 // import server from '../server';
 
 export default {
+  components: {
+    'modal-create-user': ModalCreateUser,
+  },
 
   data() {
     return {
       users: [],
+      isModalVisible: false,
     };
   },
 
@@ -53,6 +62,14 @@ export default {
   },
 
   methods: {
+    openModal() {
+      this.isModalVisible = true;
+    },
+
+    closeModal() {
+      this.isModalVisible = false;
+    },
+
     getAllUsers() {
       axios
         .get('http://localhost:3000/user')
@@ -62,7 +79,6 @@ export default {
     },
 
     deleteUser(id) {
-      console.log(id);
       axios
         .delete(`http://localhost:3000/user/${id}`)
         .then(() => window.location.reload());

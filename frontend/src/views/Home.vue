@@ -1,8 +1,13 @@
 <template>
   <div>
-    <modal-create-user v-show="isModalVisible" @close="closeModal" />
+    <modal-create-user v-if="isCreateModalVisible" @close="closeCreateModal" />
+    <modal-update-user
+      v-if="isUpdateModalVisible"
+      :idToUpdateUser="idToUpdateUser"
+      @close="closeUpdateModal"
+    />
     <div>
-      <button type="button" @click="openModal">Cadastrar</button>
+      <button type="button" @click="openCreateModal">Cadastrar</button>
     </div>
     <div>
       <div v-if="users.length === 0">
@@ -28,7 +33,7 @@
             <td>
               <div>
                 <div>
-                  <button>Editar</button>
+                  <button @click="openUpdateModal(user.id)">Editar</button>
                   <button @click="deleteUser(user.id)">Deletar</button>
                 </div>
               </div>
@@ -43,17 +48,21 @@
 <script>
 import axios from 'axios';
 import ModalCreateUser from '../components/ModalCreateUser.vue';
+import ModalUpdateUser from '../components/ModalUpdateUser.vue';
 // import server from '../server';
 
 export default {
   components: {
     'modal-create-user': ModalCreateUser,
+    'modal-update-user': ModalUpdateUser,
   },
 
   data() {
     return {
       users: [],
-      isModalVisible: false,
+      isCreateModalVisible: false,
+      isUpdateModalVisible: false,
+      idToUpdateUser: '',
     };
   },
 
@@ -62,14 +71,6 @@ export default {
   },
 
   methods: {
-    openModal() {
-      this.isModalVisible = true;
-    },
-
-    closeModal() {
-      this.isModalVisible = false;
-    },
-
     getAllUsers() {
       axios
         .get('http://localhost:3000/user')
@@ -82,6 +83,23 @@ export default {
       axios
         .delete(`http://localhost:3000/user/${id}`)
         .then(() => window.location.reload());
+    },
+
+    openCreateModal() {
+      this.isCreateModalVisible = true;
+    },
+
+    closeCreateModal() {
+      this.isCreateModalVisible = false;
+    },
+
+    openUpdateModal(id) {
+      this.idToUpdateUser = id;
+      this.isUpdateModalVisible = true;
+    },
+
+    closeUpdateModal() {
+      this.isUpdateModalVisible = false;
     },
   },
 

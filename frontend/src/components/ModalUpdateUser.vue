@@ -3,26 +3,32 @@
     <div class="modal-backdrop">
       <div class="modal">
         <header class="modal-header" id="modalTitle">
-          <h2>Adicionar</h2>
-          <button class="btn-close" type="button" @click="closeCreateModal">Fechar</button>
+          <h2>Editar</h2>
+          <button class="btn-close" type="button" @click="closeUpdateModal">Fechar</button>
         </header>
         <form class="modal-form" id="modalDescription">
           <div>
           <label for="id">ID</label>
-          <input type="text" id="id" v-model="id" placeholder="Digite um ID" />
+          <input disabled=true type="text" id="id" v-model="user.id" placeholder="Digite um ID" />
         </div>
         <div>
           <label for="nome">Nome</label>
-          <input type="text" id="nome" v-model="nome" placeholder="Digite um nome" />
+          <input type="text" id="nome" v-model="user.nome"
+           placeholder="Digite um nome" />
         </div>
         <div>
           <label for="idade">Idade</label>
-          <input type="text" id="idade" v-model="idade" placeholder="Digite sua idade" />
+          <input
+            type="number"
+            id="idade"
+            v-model="user.idade"
+            placeholder="Digite sua idade"
+          />
         </div>
         </form>
         <footer class="modal-footer">
-          <button type="button" @click="closeCreateModal">Cancelar</button>
-          <button class="btn-green" type="submit" @click="createUser">Salvar</button>
+          <button type="button" @click="closeUpdateModal">Cancelar</button>
+          <button class="btn-green" type="button" @click="updateUser">Salvar</button>
         </footer>
       </div>
     </div>
@@ -33,37 +39,56 @@
 import axios from 'axios';
 
 export default {
+  props: ['idToUpdateUser'],
+
   data() {
     return {
-      id: '',
-      nome: '',
-      idade: '',
+      user: {
+        id: '',
+        nome: '',
+        idade: '',
+      },
+      getUserToUpdate: this.idToUpdateUser,
     };
   },
 
   name: 'Modal',
 
+  created() {
+    const id = 4;
+    this.getUserById(id);
+  },
+
   methods: {
-    closeCreateModal() {
+    closeUpdateModal() {
       this.$emit('close');
     },
 
-    createUser() {
+    updateUser() {
       const userData = {
-        id: this.id,
-        nome: this.nome,
-        idade: this.idade,
+        id: this.user.id,
+        nome: this.user.nome,
+        idade: this.user.idade,
       };
 
       axios
-        .post('http://localhost:3000/user', userData)
+        .put(`http://localhost:3000/user/${this.user.id}`, userData)
         .then(() => {
           window.location.reload();
           this.close();
         });
     },
-  },
 
+    getUserById() {
+      const id = this.getUserToUpdate;
+      console.log('getUSerById ->', id);
+      axios
+        .get(`http://localhost:3000/user/${id}`)
+        .then((res) => {
+          this.user = res.data;
+        });
+    },
+  },
 };
 
 </script>

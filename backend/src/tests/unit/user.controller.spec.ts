@@ -24,10 +24,14 @@ describe('The UserController', () => {
         ...createUserDTO,
       };
     }),
-    updateUser: jest.fn((updateUserDTO) => {
-      return {
-        ...updateUserDTO,
-      };
+    updateUser: jest.fn((id, updateUserDTO) => {
+      return users.find((user) => {
+        if (user.id === id) {
+          return {
+            ...updateUserDTO,
+          };
+        }
+      });
     }),
     getAllUsers: jest.fn(() => users),
     getUserById: jest.fn((id) => {
@@ -67,21 +71,35 @@ describe('The UserController', () => {
   });
 
   describe('updateUser function', () => {
-    it('returns an object with a message "User has been updated"', async () => {
-      const updateUserDTO = {
-        id: 1,
-        nome: 'test name',
-        idade: 25,
-      };
+    describe('when there is a user with the given id', () => {
+      it('returns an object with a message "User has been updated"', async () => {
+        const updateUserDTO = {
+          id: 1,
+          nome: 'test name',
+          idade: 25,
+        };
 
-      const result = await controller.updateUser(
-        updateUserDTO.id,
-        updateUserDTO,
-      );
+        const result = await controller.updateUser(
+          updateUserDTO.id,
+          updateUserDTO,
+        );
 
-      expect(typeof result).toBe('object');
-      expect(result).toEqual({ message: 'User has been updated' });
-      expect(mockUserService.updateUser).toHaveBeenCalled();
+        expect(typeof result).toBe('object');
+        expect(result).toEqual({ message: 'User has been updated' });
+        expect(mockUserService.updateUser).toHaveBeenCalled();
+      });
+    });
+
+    describe('when there is not a user with the given id', () => {
+      it('returns an object with a message "User not found"', async () => {
+        const mockId = 500;
+        try {
+          await controller.updateUser(mockId, users[0]);
+        } catch (err) {
+          expect(typeof err).toBe('object');
+          expect(err.message).toEqual('User not found');
+        }
+      });
     });
   });
 
@@ -97,13 +115,25 @@ describe('The UserController', () => {
   });
 
   describe('deleteUser function', () => {
-    describe('when the user exists', () => {
+    describe('when there is a user with the given id', () => {
       it('returns an object with a message "User has been deleted"', async () => {
         const result = await controller.deleteUser(users[0].id);
 
         expect(typeof result).toBe('object');
         expect(result).toEqual({ message: 'User has been deleted' });
         expect(mockUserService.updateUser).toHaveBeenCalled();
+      });
+    });
+
+    describe('when there is not a user with the given id', () => {
+      it('returns an object with a message "User not found"', async () => {
+        const mockId = 500;
+        try {
+          await controller.deleteUser(mockId);
+        } catch (err) {
+          expect(typeof err).toBe('object');
+          expect(err.message).toEqual('User not found');
+        }
       });
     });
   });
@@ -116,6 +146,18 @@ describe('The UserController', () => {
         expect(typeof result).toBe('object');
         expect(result).toEqual(users[0]);
         expect(mockUserService.getUserById).toHaveBeenCalled();
+      });
+    });
+
+    describe('when there is not a user with the given id', () => {
+      it('returns an object with a message "User not found"', async () => {
+        const mockId = 500;
+        try {
+          await controller.getUserById(mockId);
+        } catch (err) {
+          expect(typeof err).toBe('object');
+          expect(err.message).toEqual('User not found');
+        }
       });
     });
   });

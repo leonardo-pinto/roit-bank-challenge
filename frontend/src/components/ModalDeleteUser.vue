@@ -3,26 +3,16 @@
     <div class="modal-backdrop">
       <div class="modal">
         <header class="modal-header" id="modalTitle">
-          <h2>Adicionar</h2>
-          <button class="btn-close" type="button" @click="closeCreateModal">Fechar</button>
+          <h2>Excluir</h2>
+          <button class="btn-close" type="button" @click="closeDeleteModal">Fechar</button>
         </header>
-        <form class="modal-form" id="modalDescription">
-          <div>
-          <label for="id">ID</label>
-          <input type="text" id="id" v-model="id" placeholder="Digite um ID" />
-        </div>
-        <div>
-          <label for="nome">Nome</label>
-          <input type="text" id="nome" v-model="nome" placeholder="Digite um nome" />
-        </div>
-        <div>
-          <label for="idade">Idade</label>
-          <input type="text" id="idade" v-model="idade" placeholder="Digite sua idade" />
-        </div>
-        </form>
+        <section class="modal-form" id="modalDescription">
+          <p>X</p>
+          <p>Confirma a exclusão deste registro?</p>
+        </section>
         <footer class="modal-footer">
-          <button type="button" @click="closeCreateModal">Cancelar</button>
-          <button class="btn-green" type="submit" @click="createUser">Salvar</button>
+          <button type="button" @click="closeDeleteModal">Cancelar</button>
+          <button class="btn-green" type="submit" @click="deleteUser">Excluir</button>
         </footer>
       </div>
     </div>
@@ -33,30 +23,24 @@
 import axios from 'axios';
 
 export default {
+  props: ['idUser'],
+
   data() {
     return {
-      id: '',
-      nome: '',
-      idade: '',
+      id: this.idUser,
     };
   },
 
   name: 'Modal',
 
   methods: {
-    close() {
+    closeDeleteModal() {
       this.$emit('close');
     },
 
-    createUser() {
-      const userData = {
-        id: this.id,
-        nome: this.nome,
-        idade: this.idade,
-      };
-
+    deleteUser() {
       axios
-        .post('http://localhost:3000/user', userData)
+        .delete(`http://localhost:3000/user/${this.id}`)
         .then(() => {
           window.location.reload();
           this.close();

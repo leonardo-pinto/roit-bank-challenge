@@ -39,7 +39,7 @@
 import axios from 'axios';
 
 export default {
-  props: ['idToUpdateUser'],
+  props: ['idUser'],
 
   data() {
     return {
@@ -48,16 +48,11 @@ export default {
         nome: '',
         idade: '',
       },
-      getUserToUpdate: this.idToUpdateUser,
+      getUserToUpdate: this.idUser,
     };
   },
 
   name: 'Modal',
-
-  created() {
-    const id = 4;
-    this.getUserById(id);
-  },
 
   methods: {
     closeUpdateModal() {
@@ -81,7 +76,6 @@ export default {
 
     getUserById() {
       const id = this.getUserToUpdate;
-      console.log('getUSerById ->', id);
       axios
         .get(`http://localhost:3000/user/${id}`)
         .then((res) => {

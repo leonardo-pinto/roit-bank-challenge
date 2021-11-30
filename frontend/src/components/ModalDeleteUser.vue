@@ -21,6 +21,7 @@
 
 <script>
 import axios from 'axios';
+import server from '../server';
 
 export default {
   props: ['idUser'],
@@ -40,7 +41,7 @@ export default {
 
     deleteUser() {
       axios
-        .delete(`server.baseURL/${this.id}`)
+        .delete(`${server.baseURL}/${this.id}`)
         .then(() => {
           window.location.reload();
           this.close();

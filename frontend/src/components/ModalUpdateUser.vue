@@ -113,7 +113,6 @@ export default {
 </script>
 
 <style>
-/* Modal style based on https://www.digitalocean.com/community/tutorials/vuejs-vue-modal-component */
   .modal-backdrop {
     position: fixed;
     top: 0;

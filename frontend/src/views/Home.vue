@@ -43,8 +43,12 @@
             <td>
               <div>
                 <div>
-                  <button @click="openUpdateModal(user.id)">Editar</button>
-                  <button @click="openDeleteModal(user.id)">Deletar</button>
+                  <button @click="openUpdateModal(user.id)">
+                    <edit-icon />
+                  </button>
+                  <button @click="openDeleteModal(user.id)">
+                    <delete-icon />
+                  </button>
                 </div>
               </div>
             </td>
@@ -60,6 +64,8 @@ import axios from 'axios';
 import ModalCreateUser from '../components/ModalCreateUser.vue';
 import ModalUpdateUser from '../components/ModalUpdateUser.vue';
 import ModalDeleteUser from '../components/ModalDeleteUser.vue';
+import DeleteIcon from '../components/DeleteIcon.vue';
+import EditIcon from '../components/EditIcon.vue';
 import server from '../server';
 
 export default {
@@ -67,6 +73,8 @@ export default {
     'modal-create-user': ModalCreateUser,
     'modal-update-user': ModalUpdateUser,
     'modal-delete-user': ModalDeleteUser,
+    'delete-icon': DeleteIcon,
+    'edit-icon': EditIcon,
   },
 
   data() {

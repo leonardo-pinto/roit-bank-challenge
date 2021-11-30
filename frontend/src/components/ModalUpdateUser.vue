@@ -37,6 +37,7 @@
 
 <script>
 import axios from 'axios';
+import server from '../server';
 
 export default {
   props: ['idUser'],
@@ -54,6 +55,10 @@ export default {
 
   name: 'Modal',
 
+  created() {
+    this.getUserById(this.getUserToUpdate);
+  },
+
   methods: {
     closeUpdateModal() {
       this.$emit('close');
@@ -67,7 +72,7 @@ export default {
       };
 
       axios
-        .put(`http://localhost:3000/user/${this.user.id}`, userData)
+        .put(`${server.baseURL}/${this.user.id}`, userData)
         .then(() => {
           window.location.reload();
           this.close();
@@ -77,7 +82,7 @@ export default {
     getUserById() {
       const id = this.getUserToUpdate;
       axios
-        .get(`http://localhost:3000/user/${id}`)
+        .get(`${server.baseURL}/${id}`)
         .then((res) => {
           this.user = res.data;
         });

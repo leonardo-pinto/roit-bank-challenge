@@ -17,7 +17,7 @@
         </div>
         <div>
           <label for="idade">Idade</label>
-          <input type="text" id="idade" v-model="idade" placeholder="Digite sua idade" />
+          <input type="number" id="idade" v-model="idade" placeholder="Digite sua idade" />
         </div>
         </form>
         <footer class="modal-footer">
@@ -45,7 +45,7 @@ export default {
   name: 'Modal',
 
   methods: {
-    close() {
+    closeCreateModal() {
       this.$emit('close');
     },
 

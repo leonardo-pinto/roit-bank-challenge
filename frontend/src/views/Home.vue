@@ -58,7 +58,7 @@ import axios from 'axios';
 import ModalCreateUser from '../components/ModalCreateUser.vue';
 import ModalUpdateUser from '../components/ModalUpdateUser.vue';
 import ModalDeleteUser from '../components/ModalDeleteUser.vue';
-// import server from '../server';
+import server from '../server';
 
 export default {
   components: {
@@ -84,7 +84,7 @@ export default {
   methods: {
     getAllUsers() {
       axios
-        .get('http://localhost:3000/user')
+        .get(server.baseURL)
         .then((res) => {
           this.users = res.data;
         });
@@ -92,7 +92,7 @@ export default {
 
     deleteUser(id) {
       axios
-        .delete(`http://localhost:3000/user/${id}`)
+        .delete(`server.baseURL/${id}`)
         .then(() => window.location.reload());
     },
 

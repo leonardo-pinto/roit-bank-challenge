@@ -31,6 +31,7 @@
 
 <script>
 import axios from 'axios';
+import server from '../server';
 
 export default {
   data() {
@@ -56,7 +57,7 @@ export default {
       };
 
       axios
-        .post('http://localhost:3000/user', userData)
+        .post(server.baseURL, userData)
         .then(() => {
           window.location.reload();
           this.close();

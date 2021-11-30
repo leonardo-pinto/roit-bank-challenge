@@ -40,7 +40,7 @@ export default {
 
     deleteUser() {
       axios
-        .delete(`http://localhost:3000/user/${this.id}`)
+        .delete(`server.baseURL/${this.id}`)
         .then(() => {
           window.location.reload();
           this.close();

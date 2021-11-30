@@ -3,22 +3,36 @@
     <div class="modal-backdrop">
       <div class="modal">
         <header class="modal-header" id="modalTitle">
-          <h2>Editar</h2>
-          <button class="btn-close" type="button" @click="closeUpdateModal">Fechar</button>
+          <h2 class="modal-header-title">Editar</h2>
+          <button class="btn-close" type="button" @click="closeUpdateModal">
+            <p class="btn-close-text">X</p>
+          </button>
         </header>
         <form class="modal-form" id="modalDescription">
           <div>
           <label for="id">ID</label>
-          <input disabled=true type="text" id="id" v-model="user.id" placeholder="Digite um ID" />
+          <input
+            class="input-label"
+            disabled=true
+            type="text"
+            id="id"
+            v-model="user.id"
+            placeholder="Digite um ID" />
         </div>
         <div>
           <label for="nome">Nome</label>
-          <input type="text" id="nome" v-model="user.nome"
-           placeholder="Digite um nome" />
+          <input
+            class="input-label"
+            type="text"
+            id="nome"
+            v-model="user.nome"
+            placeholder="Digite um nome"
+          />
         </div>
         <div>
           <label for="idade">Idade</label>
           <input
+            class="input-label"
             type="number"
             id="idade"
             v-model="user.idade"
@@ -27,8 +41,14 @@
         </div>
         </form>
         <footer class="modal-footer">
-          <button type="button" @click="closeUpdateModal">Cancelar</button>
-          <button class="btn-green" type="button" @click="updateUser">Salvar</button>
+          <button class="btn-cancel" type="button" @click="closeUpdateModal">
+            <p class="btn-cancel-text">
+              Cancelar
+            </p>
+          </button>
+          <button class="btn-save" type="button" @click="updateUser">
+            <p class="btn-save-text">Salvar</p>
+          </button>
         </footer>
       </div>
     </div>
@@ -123,7 +143,6 @@ export default {
   .modal-header {
     position: relative;
     border-bottom: 1px solid #eeeeee;
-    color: #4AAE9B;
     justify-content: space-between;
   }
 
@@ -146,14 +165,12 @@ export default {
     padding: 10px;
     cursor: pointer;
     font-weight: bold;
-    color: #4AAE9B;
+
     background: transparent;
   }
 
   .btn-green {
     color: white;
-    background: #4AAE9B;
-    border: 1px solid #4AAE9B;
     border-radius: 2px;
   }
 
@@ -165,5 +182,13 @@ export default {
   .modal-fade-enter-active,
   .modal-fade-leave-active {
     transition: opacity .5s ease;
+  } .input {
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    border: 1px solid var(---dfe3e6-border);
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DFE3E6;
+    border-radius: 4px;
+    font: normal normal normal 14px/20px Open Sans;
+    opacity: 1;
   }
 </style>

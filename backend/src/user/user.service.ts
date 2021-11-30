@@ -10,12 +10,12 @@ export class UserService {
   constructor(@InjectModel('User') private readonly userModel: Model<User>) {}
 
   async getAllUsers(): Promise<User[]> {
-    const users = await this.userModel.find().exec();
+    const users = await this.userModel.find();
     return users;
   }
 
   async getUserById(id: number): Promise<User> {
-    const user = await this.userModel.findOne({ id }).exec();
+    const user = await this.userModel.findOne({ id });
     return user;
   }
 
@@ -25,9 +25,10 @@ export class UserService {
   }
 
   async updateUser(id: number, updateUserDTO: UpdateUserDTO): Promise<User> {
-    const updatedUser = await this.userModel
-      .findOneAndUpdate({ id }, updateUserDTO)
-      .exec();
+    const updatedUser = await this.userModel.findOneAndUpdate(
+      { id },
+      updateUserDTO,
+    );
     return updatedUser;
   }
 

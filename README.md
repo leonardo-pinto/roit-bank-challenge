@@ -134,6 +134,11 @@ Desenvolva um projeto utilizando Nest (https://docs.nestjs.com/) e Vue 2 ou 3 (h
   $ npm run test:e2e:cov
   ```
   
+  ## Documentação da API
+  A documentação do backend foi realizada utilizando o Swagger (https://docs.nestjs.com/openapi/introduction).
+  
+  Para acessar a documentação utilize o endpoint `/api`: (e.g. http://localhost:PORTA/api/, no qual a PORTA é a variável PORT setada no .env) 
+ 
   ## Frontend
   ### Entre no diretório frontend
   

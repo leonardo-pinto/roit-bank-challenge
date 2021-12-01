@@ -4,12 +4,12 @@
       <div class="modal">
         <header class="modal-header" id="modalTitle">
           <h2 class="modal-header-title-delete">Excluir</h2>
-          <button class="btn-close" type="button"       @click="closeDeleteModal">
+          <button class="btn-close" type="button" @click="closeDeleteModal">
             X
           </button>
         </header>
         <section class="modal-delete-form" id="modalDescription">
-          <delete-text-icon />
+          <img src="../assets/checagem_errada.svg" />
           <p class="delete-text">Confirma a exclusão deste registro?</p>
         </section>
         <footer class="modal-footer">
@@ -28,13 +28,8 @@
 <script>
 import axios from 'axios';
 import server from '../server';
-import DeleteTextIcon from './DeleteTextIcon.vue';
 
 export default {
-  components: {
-    'delete-text-icon': DeleteTextIcon,
-  },
-
   props: ['idUser'],
 
   data() {
@@ -112,14 +107,11 @@ export default {
   }
 
   .delete-text {
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal)
-    var(--unnamed-font-size-14)/var(--unnamed-line-spacing-18) var(--unnamed-font-family-open-sans);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(---000000-87-);
-    text-align: left;
+    color: #000000DE;
     font: normal normal normal 14px/18px Open Sans;
     letter-spacing: 0px;
-    color: #000000DE;
+    margin-left: 10px;
+    text-align: left;
     opacity: 1;
   }
 

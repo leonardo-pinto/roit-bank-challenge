@@ -81,6 +81,60 @@ Desenvolva um projeto utilizando Nest (https://docs.nestjs.com/) e Vue 2 ou 3 (h
   $ sudo mongod
   ```
   
+  ### Configurando variáveis de ambiente
+  Para que a aplicação funcione corretamente, é necessário a configuração das variáveis de ambiente.
+  Na raíz do diretório backend, há um arquivo de exemplo (.env.example) com as chaves que devem ser configuradas.
+  
+  DATABASE_URL: é a url com a qual o MongoDB deverá se conectar;
+  PORT: porta usada para a conexão;
+  
+  ** Atenção: caso as variáveis não sejam definidas a aplicação não irá funcionar corretamente **
+  
+  ### Rodando o backend
+  Após se certificar que as dependências foram instaladas, que o MongoDB está rodando e as variáveis de ambiente configuradas:
+  
+   ```bash
+  # Ainda dentro do diretório backend, inicie o servidor
+  $ npm run start
+  ```
+  ### Executando os testes no backend
+  
+  Testes unitários
+   ```bash
+  # Rodando os testes unitários
+  $ npm run test
+  
+  $ Rodando os testes unitários com relatório de cobertura
+  $ npm run test:cov
+  ```
+  
+  Testes E2E (End-To-End)
+   ```bash
+  # Rodando os testes e2e
+  $ npm run test:e2e
+  
+  $ Rodando os testes e2e com relatório de cobertura
+  $ npm run test:e2e:cov
+  ```
+  
+  ## Frontend
+  Abra outra aba no terminal, e navegue até o diretório de frontend.
+  
+  ````bash
+  # Acesse o diretório do frontend
+  $ cd frontend
+  ````
+  
+  ### Dentro do diretório frontend, instale as dependências
+  ````bash
+  # Instale as dependências necessárias
+  $ npm install
+  ````
+  
+  ### Rodando o frontend
+  ```bash
+  npm run serve
+  ```
   
   
   

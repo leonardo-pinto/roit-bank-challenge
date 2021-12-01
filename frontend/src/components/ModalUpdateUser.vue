@@ -5,40 +5,40 @@
         <header class="modal-header" id="modalTitle">
           <h2 class="modal-header-title">Editar</h2>
           <button class="btn-close" type="button" @click="closeUpdateModal">
-            <p class="btn-close-text">X</p>
+            X
           </button>
         </header>
         <form class="modal-form" id="modalDescription">
-          <div>
-          <label for="id">ID</label>
-          <input
-            class="input-label"
-            disabled=true
-            type="text"
-            id="id"
-            v-model="user.id"
-            placeholder="Digite um ID" />
-        </div>
-        <div>
-          <label for="nome">Nome</label>
-          <input
-            class="input-label"
-            type="text"
-            id="nome"
-            v-model="user.nome"
-            placeholder="Digite um nome"
-          />
-        </div>
-        <div>
-          <label for="idade">Idade</label>
-          <input
-            class="input-label"
-            type="number"
-            id="idade"
-            v-model="user.idade"
-            placeholder="Digite sua idade"
-          />
-        </div>
+          <div class="input-container">
+            <label class="input-label" for="id">ID</label>
+            <input
+              class="input"
+              disabled=true
+              type="text"
+              id="id"
+              v-model="user.id"
+              placeholder="Digite um ID" />
+          </div>
+          <div class="input-container">
+            <label class="input-label" for="nome">Nome</label>
+            <input
+              class="input"
+              type="text"
+              id="nome"
+              v-model="user.nome"
+              placeholder="Digite um nome"
+            />
+          </div>
+          <div class="input-container">
+            <label class="input-label" for="idade">Idade</label>
+            <input
+              class="input"
+              type="number"
+              id="idade"
+              v-model="user.idade"
+              placeholder="Digite sua idade"
+            />
+          </div>
         </form>
         <footer class="modal-footer">
           <button class="btn-cancel" type="button" @click="closeUpdateModal">
@@ -125,14 +125,6 @@ export default {
     align-items: center;
   }
 
-  .modal {
-    background: #FFFFFF;
-    box-shadow: 2px 2px 20px 1px;
-    overflow-x: auto;
-    display: flex;
-    flex-direction: column;
-  }
-
   .modal-header,
   .modal-footer {
     padding: 15px;
@@ -145,32 +137,9 @@ export default {
     justify-content: space-between;
   }
 
-  .modal-footer {
-    border-top: 1px solid #eeeeee;
-    flex-direction: column;
-  }
-
   .modal-form {
     position: relative;
     padding: 20px 10px;
-  }
-
-  .btn-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border: none;
-    font-size: 20px;
-    padding: 10px;
-    cursor: pointer;
-    font-weight: bold;
-
-    background: transparent;
-  }
-
-  .btn-green {
-    color: white;
-    border-radius: 2px;
   }
 
   .modal-fade-enter,
@@ -189,5 +158,9 @@ export default {
     border-radius: 4px;
     font: normal normal normal 14px/20px Open Sans;
     opacity: 1;
+  }
+
+  button {
+    border-width: 0px;
   }
 </style>

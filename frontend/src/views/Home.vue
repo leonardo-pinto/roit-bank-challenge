@@ -1,5 +1,6 @@
 <template>
-  <div class="main-container">
+  <div>
+    <h1 class="main-title">Teste Engenheiro de Software Full Stack</h1>
     <modal-create-user
       v-if="isCreateModalVisible"
       @close="closeCreateModal"
@@ -14,47 +15,47 @@
       :idUser="idUser"
       @close="closeDeleteModal"
     />
-    <div class="register-container">
-      <button class="btn-register" type="button" @click="openCreateModal">
-        <p class="btn-register-text">Cadastrar</p>
-      </button>
-    </div>
-    <div>
-      <div v-if="users.length === 0">
-        <h2>Não existem usuários cadastrados</h2>
+    <div class="main-container">
+      <div class="register-container">
+        <button class="btn-register" type="button" @click="openCreateModal">
+          Cadastrar
+        </button>
       </div>
-    </div>
+      <div>
+        <div v-if="users.length === 0">
+          <h3>Não existem usuários cadastrados</h3>
+        </div>
+      </div>
 
-    <div>
-      <table class="user-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Idade</th>
-            <th/>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="user in users" :key="user.id">
-            <td>{{ user.id }}</td>
-            <td>{{ user.nome }}</td>
-            <td>{{ user.idade }}</td>
-            <td>
-              <div>
-                <div>
-                  <button @click="openUpdateModal(user.id)">
+      <div>
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Idade</th>
+              <th/>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="user in users" :key="user.id">
+              <td>{{ user.id }}</td>
+              <td>{{ user.nome }}</td>
+              <td>{{ user.idade }}</td>
+              <td>
+                <div class="table-btn-container">
+                  <button class="table-btn" @click="openUpdateModal(user.id)">
                     <edit-icon />
                   </button>
-                  <button @click="openDeleteModal(user.id)">
+                  <button class="table-btn" @click="openDeleteModal(user.id)">
                     <delete-icon />
                   </button>
                 </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -138,14 +139,22 @@ export default {
 </script>
 
 <style scoped>
+  .main-container {
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0px 3px 3px #00000029;
+    margin: auto;
+    padding: 10px;
+    width: 40%;
+  }
 
-  /* .main-container {
-    border: 1px solid var(---dfe3e6-border);
-    background: #F2F3F5 0% 0% no-repeat padding-box;
-    border: 1px solid #DFE3E6;
-    border-radius: 10px 10px 0px 0px;
+  .main-title {
+    text-align: center;
+    font-size: 1.5em;
+    letter-spacing: 0px;
+    color: #000000DE;
     opacity: 1;
-  } */
+  }
 
   .register-container {
     display: flex;
@@ -153,62 +162,69 @@ export default {
   }
 
   .btn-register {
-    background: var(---e2b874-primary) 0% 0% no-repeat padding-box;
+    width: 113px;
+    height: 40px;
     background: #E2B874 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 3px #00000029;
+    border: 1px solid #E2B874;
     border-radius: 4px;
+    color: #FFFFFF;
+    letter-spacing: 0px;
+    text-align: center;
     opacity: 1;
   }
 
-  .btn-register-text {
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600)
-    var(--unnamed-font-size-14)/var(--unnamed-line-spacing-21) var(--unnamed-font-family-poppins);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(--unnamed-color-ffffff);
-    text-align: left;
-    font: normal normal 600 14px/21px Poppins;
-    letter-spacing: 0px;
-    color: #FFFFFF;
-    opacity: 1;
+  .table-btn-container {
+    display: flex;
+    justify-content: center;
+  }
+  .table-btn {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    margin: 0px 8px;
+    overflow: hidden;
+    outline: none;
   }
 
   .user-table {
-    border: 1px solid var(---dfe3e6-border);
     background: #F2F3F5 0% 0% no-repeat padding-box;
-    border: 1px solid #DFE3E6;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 4px;
+    margin: auto;
     opacity: 1;
+    width: 95%;
+    border-collapse: collapse;
   }
 
   th {
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600)
-    var(--unnamed-font-size-14)/var(--unnamed-line-spacing-24) var(--unnamed-font-family-open-sans);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(---000000-54-);
-    text-align: left;
-    font: normal normal 600 14px/24px Open Sans;
-    letter-spacing: 0px;
     color: #0000008A;
+    font: normal normal 600 14px/24px Open Sans;
+    font-size: 1.1em;
+    letter-spacing: 0px;
+    padding: 8px;
+    text-align: left;
     opacity: 1;
   }
 
+  tbody {
+    background-color: white;
+  }
+
   tr {
-    border: 1px solid var(---dfe3e6-border);
-    background: 0% 0% no-repeat padding-box;
     border: 1px solid #DFE3E6;
     border-radius: 0px 0px 10px 10px;
     opacity: 1;
   }
 
   td {
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal)
-    var(--unnamed-font-size-13)/var(--unnamed-line-spacing-24) var(--unnamed-font-family-open-sans);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(---000000-87-);
-    text-align: left;
-    font: normal normal normal 13px/24px Open Sans;
-    letter-spacing: 0px;
+    background-color: white;
     color: #000000DD;
+    font: normal normal normal 13px/24px Open Sans;
+    font-size: 1.1em;
+    letter-spacing: 0px;
+    text-align: left;
+    padding: 8px;
     opacity: 1;
   }
 </style>

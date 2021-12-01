@@ -55,18 +55,18 @@ describe('The UserController', () => {
   });
 
   describe('createUser function', () => {
-    it('returns an object with the created user', async () => {
-      const createUserDTO = {
-        id: 1,
-        nome: 'test name',
-        idade: 25,
-      };
-
-      const result = await controller.createUser(createUserDTO);
-
-      expect(typeof result).toBe('object');
-      expect(result).toEqual(createUserDTO);
-      expect(mockUserService.createUser).toHaveBeenCalled();
+    describe('when the requisition body has all required attributes', () => {
+      it('returns an object with the created user', async () => {
+        const createUserDTO = {
+          id: 1,
+          nome: 'test name',
+          idade: 25,
+        };
+        const result = await controller.createUser(createUserDTO);
+        expect(typeof result).toBe('object');
+        expect(result).toEqual(createUserDTO);
+        expect(mockUserService.createUser).toHaveBeenCalled();
+      });
     });
   });
 

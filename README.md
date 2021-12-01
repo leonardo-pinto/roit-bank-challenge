@@ -172,6 +172,12 @@ Desenvolva um projeto utilizando Nest (https://docs.nestjs.com/) e Vue 2 ou 3 (h
   npm run serve
   ```
   
+  # Autor
+
+  Leonardo Pinto
+
+https://www.linkedin.com/in/leonardo-antonio-pinto/
+  
   
   
   

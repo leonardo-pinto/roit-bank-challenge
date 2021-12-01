@@ -132,7 +132,7 @@ export default {
   .modal-footer {
     border-top: 1px solid #eeeeee;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
   }
 
   .modal-form {

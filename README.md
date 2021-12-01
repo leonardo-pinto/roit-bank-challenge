@@ -82,7 +82,7 @@ Desenvolva um projeto utilizando Nest (https://docs.nestjs.com/) e Vue 2 ou 3 (h
   
   ```bash
   # Inicie o MongoDB
-  $ sudo mongod
+  $ mongo
   ```
   
   Caso o MongoDB esteja instalado, porém inativo

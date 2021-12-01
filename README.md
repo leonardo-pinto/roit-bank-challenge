@@ -40,9 +40,12 @@ Desenvolva um projeto utilizando Nest (https://docs.nestjs.com/) e Vue 2 ou 3 (h
 
   - Criptografia - adicionar o campo email no usuário para ser usado na criptografia
   ---
-  
+ 
   ## Rodando o projeto localmente
-  O projecto foi desenvolvido utilizando dois diretórios distintos, sendo eles o backend (desenvolvido com Nest.js) e o frontend (desenvolvido com Vue.js).
+  O projeto foi desenvolvido utilizando dois diretórios distintos, sendo eles o backend (desenvolvido com Nest.js) e o frontend (desenvolvido com Vue.js).
+  
+  ### Pré-requisitos
+   [Node.js](https://nodejs.org/en/), [Npm](https://www.npmjs.com/), [MongoDB](https://www.mongodb.com/) 
   
   ### Clonando o repositório
   Para preparar a aplicação, clone este repositório, o qual possui ambos os diretórios do projeto (i.e. `backend` e `frontend`)
@@ -52,7 +55,7 @@ Desenvolva um projeto utilizando Nest (https://docs.nestjs.com/) e Vue 2 ou 3 (h
   $ git clone git@github.com:leonardo-pinto/roit-bank-challenge.git
   ````
   
-  ## Entre no diretório do projeto clonado
+  ### Entre no diretório do projeto clonado
   
   ````bash
   # Acesse o diretório do projeto clonado
@@ -76,17 +79,31 @@ Desenvolva um projeto utilizando Nest (https://docs.nestjs.com/) e Vue 2 ou 3 (h
   ### MongoDB
   Para rodar a aplicação, é necessário que o MongoDB esteja instalado corretamente (https://www.mongodb.com/) 
   Após se certificar que o MongoDB está instalado, inicie o MongoDB.
+  
   ```bash
   # Inicie o MongoDB
   $ sudo mongod
   ```
   
+  Caso o MongoDB esteja instalado, porém inativo
+    
+  ```bash
+  # Inicie o MongoDB
+  $ sudo service mongod start
+  ```
+  
   ### Configurando variáveis de ambiente
   Para que a aplicação funcione corretamente, é necessário a configuração das variáveis de ambiente.
-  Na raíz do diretório backend, há um arquivo de exemplo (.env.example) com as chaves que devem ser configuradas.
   
-  DATABASE_URL: é a url com a qual o MongoDB deverá se conectar;
-  PORT: porta usada para a conexão;
+  Na raíz do diretório backend, há um arquivo de exemplo (.env.example) com as chaves que devem ser configuradas.
+  Para isso, retira a extensão .example, ou crie um arquivo .env.
+  
+  ```bash
+  /backend/.env
+  # Configure as variáveis de ambiente
+   DATABASE_URL: é a url com a qual o MongoDB deverá se conectar (e.g. mongodb://localhost/roit-challenge);
+   PORT: porta usada para a conexão;
+  ```
   
   ** Atenção: caso as variáveis não sejam definidas a aplicação não irá funcionar corretamente **
   
@@ -118,7 +135,7 @@ Desenvolva um projeto utilizando Nest (https://docs.nestjs.com/) e Vue 2 ou 3 (h
   ```
   
   ## Frontend
-  Abra outra aba no terminal, e navegue até o diretório de frontend.
+  ### Entre no diretório frontend
   
   ````bash
   # Acesse o diretório do frontend
@@ -130,6 +147,20 @@ Desenvolva um projeto utilizando Nest (https://docs.nestjs.com/) e Vue 2 ou 3 (h
   # Instale as dependências necessárias
   $ npm install
   ````
+  
+  ### Configurando variáveis de ambiente
+  Para que a aplicação funcione corretamente, é necessário a configuração das variáveis de ambiente.
+  
+  Na raíz do diretório frontend, há um arquivo de exemplo (.env.example) com as chaves que devem ser configuradas.
+  Para isso, retira a extensão .example, ou crie um arquivo .env.
+  
+  ```bash
+  /frontend/.env
+  # Configure as variáveis de ambiente
+    VUE_APP_PORT: é a url utilizada pelo backend, ou seja, a porta deve ser a mesma configurada no backend;
+  ```
+  
+  ** Atenção: caso as variáveis não sejam definidas a aplicação não irá funcionar corretamente **
   
   ### Rodando o frontend
   ```bash

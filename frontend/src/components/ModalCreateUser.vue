@@ -101,8 +101,6 @@ export default {
   }
 
   .modal {
-    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-    border: 1px solid var(---dfe3e6-border);
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 6px 40px #00000029;
     border: 1px solid #DFE3E6;
@@ -118,10 +116,6 @@ export default {
   }
 
   .modal-header-title {
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600)
-    var(--unnamed-font-size-18)/var(--unnamed-line-spacing-27) var(--unnamed-font-family-poppins);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(--unnamed-color-03181e);
     text-align: left;
     font: normal normal 600 18px/27px Poppins;
     letter-spacing: 0px;
@@ -147,8 +141,6 @@ export default {
   }
 
   .input {
-    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-    border: 1px solid var(---dfe3e6-border);
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #DFE3E6;
     border-radius: 4px;
@@ -178,8 +170,6 @@ export default {
  .btn-cancel {
     width: 87px;
     height: 40px;
-    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-    border: 1px solid var(---e2b874-primary);
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 3px #00000029;
     border: 1px solid #E2B874;
@@ -193,7 +183,6 @@ export default {
   .btn-save {
     width: 87px;
     height: 40px;
-    background: var(---e2b874-primary) 0% 0% no-repeat padding-box;
     background: #E2B874 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 3px #00000029;
     border: 1px solid #E2B874;

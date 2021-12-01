@@ -60,18 +60,6 @@ export default {
 </script>
 
 <style>
-  .modal-backdrop {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .modal-header-title-delete {
     letter-spacing: var(--unnamed-character-spacing-0);
     color: var(---000000-87-);
@@ -93,11 +81,6 @@ export default {
     border-bottom: 1px solid #eeeeee;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .modal-form {
-    position: relative;
-    padding: 20px 10px;
   }
 
   .modal-delete-form {

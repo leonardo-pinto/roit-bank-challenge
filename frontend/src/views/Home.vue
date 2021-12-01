@@ -97,12 +97,6 @@ export default {
         });
     },
 
-    deleteUser(id) {
-      axios
-        .delete(`server.baseURL/${id}`)
-        .then(() => window.location.reload());
-    },
-
     openCreateModal() {
       this.isCreateModalVisible = true;
     },

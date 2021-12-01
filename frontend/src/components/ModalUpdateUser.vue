@@ -113,53 +113,6 @@ export default {
 </script>
 
 <style>
-  .modal-backdrop {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .modal-header,
-  .modal-footer {
-    padding: 15px;
-    display: flex;
-  }
-
-  .modal-header {
-    position: relative;
-    border-bottom: 1px solid #eeeeee;
-    justify-content: space-between;
-  }
-
-  .modal-form {
-    position: relative;
-    padding: 20px 10px;
-  }
-
-  .modal-fade-enter,
-  .modal-fade-leave-to {
-    opacity: 0;
-  }
-
-  .modal-fade-enter-active,
-  .modal-fade-leave-active {
-    transition: opacity .5s ease;
-  } .input {
-    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-    border: 1px solid var(---dfe3e6-border);
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #DFE3E6;
-    border-radius: 4px;
-    font: normal normal normal 14px/20px Open Sans;
-    opacity: 1;
-  }
-
   button {
     border-width: 0px;
   }

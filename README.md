@@ -16,7 +16,7 @@ Desenvolva um projeto utilizando Nest (https://docs.nestjs.com/) e Vue 2 ou 3 (h
   - UF
   - Código IBGE
   - Outras informações;
-  - 
+  
 3. Consulta de endereço utilizando o WebService do GitHub (https://api.github.com/search/users?q=<USERNAME>), vincular ao usuário e guardar informações como:
   - Login;
   - ID;

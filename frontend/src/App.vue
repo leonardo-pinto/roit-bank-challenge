@@ -15,8 +15,7 @@
   color: #2c3e50;
 }
 
-#nav {
-  /* padding: 30px; */
+:root {
+  background-color: #00000029;
 }
-
 </style>

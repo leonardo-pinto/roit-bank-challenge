@@ -5,41 +5,41 @@
         <header class="modal-header" id="modalTitle">
           <h2 class="modal-header-title">Adicionar</h2>
           <button class="btn-close" type="button" @click="closeCreateModal">
-            <p class="btn-close-text">X</p>
+            X
           </button>
         </header>
         <form class="modal-form" id="modalDescription">
-          <div>
-          <label class="input-label" for="id">ID</label>
-          <input class="input" type="text" id="id" v-model="id" placeholder="Digite um ID" />
-        </div>
-        <div>
-          <label class="input-label" for="nome">Nome</label>
-          <input
-            class="input"
-            type="text"
-            id="nome"
-            v-model="nome"
-            placeholder="Digite um nome"
-          />
-        </div>
-        <div>
-          <label class="input-label" for="idade">Idade</label>
-          <input
-            class="input"
-            type="number"
-            id="idade"
-            v-model="idade"
-            placeholder="Digite sua idade"
-          />
-        </div>
+          <div class="input-container">
+            <label class="input-label" for="id">ID</label>
+            <input class="input" type="text" id="id" v-model="id" placeholder="Digite um ID" />
+          </div>
+          <div class="input-container">
+            <label class="input-label" for="nome">Nome</label>
+            <input
+              class="input"
+              type="text"
+              id="nome"
+              v-model="nome"
+              placeholder="Digite um nome"
+            />
+          </div>
+          <div class="input-container">
+            <label class="input-label" for="idade">Idade</label>
+            <input
+              class="input"
+              type="number"
+              id="idade"
+              v-model="idade"
+              placeholder="Digite sua idade"
+            />
+          </div>
         </form>
         <footer class="modal-footer">
           <button class="btn-cancel" type="button" @click="closeCreateModal">
-            <p class="btn-cancel-text">Cancelar</p>
+            Cancelar
           </button>
           <button class="btn-save" type="submit" @click="createUser">
-             <p class="btn-save-text">Salvar</p>
+             Salvar
           </button>
         </footer>
       </div>
@@ -88,17 +88,16 @@ export default {
 </script>
 
 <style>
-/* Modal style based on https://www.digitalocean.com/community/tutorials/vuejs-vue-modal-component */
   .modal-backdrop {
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    align-items: center;
     background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
-    align-items: center;
   }
 
   .modal {
@@ -109,18 +108,13 @@ export default {
     border: 1px solid #DFE3E6;
     border-radius: 10px;
     opacity: 1;
-  }
-
-  .modal-header,
-  .modal-footer {
-    padding: 15px;
-    display: flex;
+    width: 80%;
   }
 
   .modal-header {
+    display: flex;
     position: relative;
     border-bottom: 1px solid #eeeeee;
-    justify-content: space-between;
   }
 
   .modal-header-title {
@@ -137,12 +131,19 @@ export default {
 
   .modal-footer {
     border-top: 1px solid #eeeeee;
-    flex-direction: column;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .modal-form {
     position: relative;
     padding: 20px 10px;
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
   }
 
   .input {
@@ -152,71 +153,54 @@ export default {
     border: 1px solid #DFE3E6;
     border-radius: 4px;
     font: normal normal normal 14px/20px Open Sans;
+    padding: 10px;
     opacity: 1;
   }
 
   .input-label {
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal)
-    var(--unnamed-font-size-12)/var(--unnamed-line-spacing-24) var(--unnamed-font-family-open-sans);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(---000000-87-);
+    color: #000000DE;
     text-align: left;
     font: normal normal normal 12px/24px Open Sans;
+    font-size: 1.0em;
     letter-spacing: 0px;
-    color: #000000DE;
+    margin: 10px 5px;
     opacity: 1;
   }
 
   .btn-close {
-    background: #707E8A 0% 0% no-repeat padding-box;
+    background: #DDDFE5 0% 0% no-repeat padding-box;
+    border-radius: 50%;
     opacity: 1;
-  }
-
-  .btn-close-text {
-    background: #707E8A 0% 0% no-repeat padding-box;
-    opacity: 1;
+    height: 30px;
+    width: 30px;
   }
 
  .btn-cancel {
+    width: 87px;
+    height: 40px;
     background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
     border: 1px solid var(---e2b874-primary);
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 3px #00000029;
     border: 1px solid #E2B874;
     border-radius: 4px;
-    opacity: 1;
-  }
-
-  .btn-cancel-text {
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600)
-    var(--unnamed-font-size-14)/var(--unnamed-line-spacing-21) var(--unnamed-font-family-poppins);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(---e2b874-primary);
-    text-align: left;
-    font: normal normal 600 14px/21px Poppins;
-    letter-spacing: 0px;
     color: #E2B874;
+    margin: 0px 15px;
     opacity: 1;
-  }
-
-  .btn-save-text {
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600)
-    var(--unnamed-font-size-14)/var(--unnamed-line-spacing-21) var(--unnamed-font-family-poppins);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(--unnamed-color-ffffff);
-    text-align: left;
-    font: normal normal 600 14px/21px Poppins;
-    letter-spacing: 0px;
-    color: #FFFFFF;
-    opacity: 1;
+    width: 30%;
   }
 
   .btn-save {
+    width: 87px;
+    height: 40px;
     background: var(---e2b874-primary) 0% 0% no-repeat padding-box;
     background: #E2B874 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 3px #00000029;
+    border: 1px solid #E2B874;
     border-radius: 4px;
+    color: #FFFFFF;
     opacity: 1;
+    width: 30%;
   }
 
   .modal-fade-enter,

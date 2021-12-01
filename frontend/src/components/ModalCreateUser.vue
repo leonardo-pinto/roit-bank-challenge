@@ -106,7 +106,7 @@ export default {
     border: 1px solid #DFE3E6;
     border-radius: 10px;
     opacity: 1;
-    width: 80%;
+    width: 30%;
   }
 
   .modal-header {

@@ -18,4 +18,11 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
   },
+  "include": [
+    "./src/tests/e2e/*.spec.ts",
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
 }

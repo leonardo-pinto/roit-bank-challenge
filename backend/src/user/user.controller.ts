@@ -11,7 +11,8 @@ import {
 import { CreateUserDTO } from './dto/create-user.dto';
 import { UpdateUserDTO } from './dto/update-user.dto';
 import { UserService } from './user.service';
-import { ValidateNewUser } from './validations/validateNewUser';
+import { ValidateNewUser } from './validations/validateNewUser.pipe';
+import { ValidateFields } from './validations/validateFields.pipe';
 
 @Controller('user')
 export class UserController {
@@ -33,7 +34,9 @@ export class UserController {
   }
 
   @Post()
-  async createUser(@Body(ValidateNewUser) createUserDTO: CreateUserDTO) {
+  async createUser(
+    @Body(ValidateFields, ValidateNewUser) createUserDTO: CreateUserDTO,
+  ) {
     const newUser = await this.userService.createUser(createUserDTO);
 
     return newUser;
@@ -42,7 +45,7 @@ export class UserController {
   @Put(':id')
   async updateUser(
     @Param('id') id: number,
-    @Body() updateUserDTO: UpdateUserDTO,
+    @Body(ValidateFields) updateUserDTO: UpdateUserDTO,
   ) {
     const updatedUser = await this.userService.updateUser(id, updateUserDTO);
     if (!updatedUser) throw new NotFoundException('User not found');

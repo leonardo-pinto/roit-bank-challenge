@@ -8,7 +8,6 @@ export class ValidateNewUser implements PipeTransform {
 
   async transform(user: User) {
     const idExists = await this.userService.getUserById(user.id);
-
     if (idExists) throw new ConflictException('Id already exists');
 
     const nomeExists = await this.userService.getUserByName(user.nome);

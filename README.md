@@ -40,5 +40,50 @@ Desenvolva um projeto utilizando Nest (https://docs.nestjs.com/) e Vue 2 ou 3 (h
 
   - Criptografia - adicionar o campo email no usuário para ser usado na criptografia
   ---
+  
+  ## Rodando o projeto localmente
+  O projecto foi desenvolvido utilizando dois diretórios distintos, sendo eles o backend (desenvolvido com Nest.js) e o frontend (desenvolvido com Vue.js).
+  
+  ### Clonando o repositório
+  Para preparar a aplicação, clone este repositório, o qual possui ambos os diretórios do projeto (i.e. `backend` e `frontend`)
+  
+  ````bash
+  # Clone o repositório
+  $ git clone git@github.com:leonardo-pinto/roit-bank-challenge.git
+  ````
+  
+  ## Entre no diretório do projeto clonado
+  
+  ````bash
+  # Acesse o diretório do projeto clonado
+  $ cd roit-bank-challenge
+  ````
+  
+  ## Backend
+  ### Entre no diretório backend
+  
+   ````bash
+  # Acesse o diretório do backend
+  $ cd backend
+  ````
+  
+  ### Dentro do diretório backend, instale as dependências
+  ````bash
+  # Instale as dependências necessárias
+  $ npm install
+  ````
+  
+  ### MongoDB
+  Para rodar a aplicação, é necessário que o MongoDB esteja instalado corretamente (https://www.mongodb.com/) 
+  Após se certificar que o MongoDB está instalado, inicie o MongoDB.
+  ```bash
+  # Inicie o MongoDB
+  $ sudo mongod
+  ```
+  
+  
+  
+  
+  
 
 
